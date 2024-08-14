@@ -8,14 +8,19 @@
     <header>
         <div class="container">
             <div id="branding">
-            <h3>Registration Portal by "TUSHAR TOMAR"</h3>
+                <h2>Registration Portal by "TUSHAR TOMAR"</h2>
             </div>
             <nav>
                 <ul>
-                    <li><a href="<?php echo site_url('auth/dashboard'); ?>">Dashboard</a></li>
-                    <li><a href="<?php echo site_url('auth/profile'); ?>">Profile</a></li>
-                    <li><a href="<?php echo site_url('auth/search'); ?>">Search</a></li>
-                    <li><a href="<?php echo site_url('auth/logout'); ?>">Logout</a></li>
+                    <?php if ($this->session->userdata('logged_in')): ?>
+                        <li><a href="<?php echo site_url('auth/dashboard'); ?>">Dashboard</a></li>
+                        <li><a href="<?php echo site_url('auth/profile'); ?>">Profile</a></li>
+                        <li><a href="<?php echo site_url('auth/search'); ?>">Search</a></li>
+                        <li><a href="<?php echo site_url('auth/logout'); ?>">Logout</a></li>
+                    <?php else: ?>
+                        <li><a href="<?php echo site_url('auth/register'); ?>">Sign Up</a></li>
+                        <li><a href="<?php echo site_url('auth/login'); ?>">Log In</a></li>
+                    <?php endif; ?>
                 </ul>
             </nav>
         </div>
@@ -34,7 +39,12 @@
             </div>
             <button type="submit" class="btn">Login</button>
         <?php echo form_close(); ?>
-        <p>Don't have an account? <a href="<?php echo site_url('auth/register'); ?>">Register here</a></p>
     </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; <?php echo date('Y'); ?> Registration Portal by "TUSHAR TOMAR". All rights reserved.</p>
+        </div>
+    </footer>
 </body>
 </html>

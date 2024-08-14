@@ -8,7 +8,7 @@
     <header>
         <div class="container">
             <div id="branding">
-            <h3>Registration Portal by "TUSHAR TOMAR"</h3>
+                <h2>Registration Portal by "TUSHAR TOMAR"</h2>
             </div>
             <nav>
                 <ul>
@@ -26,11 +26,12 @@
             <img src="<?php echo base_url('uploads/' . $profile_picture); ?>" alt="Profile Picture" width="150">
         <?php endif; ?>
         <h1>Welcome, <?php echo $name; ?>!</h1>
-        <!-- <ul>
-            <li><a href="<?php echo site_url('auth/profile'); ?>">Profile</a></li>
-            <li><a href="<?php echo site_url('auth/search'); ?>">Search</a></li>
-            <li><a href="<?php echo site_url('auth/logout'); ?>">Logout</a></li>
-        </ul> -->
     </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; <?php echo date('Y'); ?> Registration Portal by "TUSHAR TOMAR". All rights reserved.</p>
+        </div>
+    </footer>
 </body>
 </html>

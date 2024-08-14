@@ -8,7 +8,7 @@
     <header>
         <div class="container">
             <div id="branding">
-            <h3>Registration Portal by "TUSHAR TOMAR"</h3>
+                <h2>Registration Portal by "TUSHAR TOMAR"</h2>
             </div>
             <nav>
                 <ul>
@@ -48,5 +48,11 @@
             <button type="submit" class="btn">Update Profile</button>
         <?php echo form_close(); ?>
     </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; <?php echo date('Y'); ?> Registration Portal by "TUSHAR TOMAR". All rights reserved.</p>
+        </div>
+    </footer>
 </body>
 </html>
