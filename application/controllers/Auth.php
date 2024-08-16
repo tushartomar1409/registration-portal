@@ -32,23 +32,28 @@ class Auth extends CI_Controller {
 
             $this->upload->initialize($config);
 
-            if ($this->upload->do_upload('profile_picture')) {
+            if (!$this->upload->do_upload('profile_picture')) {
+                $error = $this->upload->display_errors();
+                log_message('error', 'File Upload Error: ' . $error);
+                $profile_picture = ''; 
+            } else {
                 $uploadData = $this->upload->data();
                 $profile_picture = $uploadData['file_name'];
-            } else {
-                $profile_picture = '';
             }
 
             $data = array(
                 'name' => $this->input->post('name'),
                 'email' => $this->input->post('email'),
-                'password' => $this->input->post('password'),  
+                'password' => $this->input->post('password'), 
                 'profile_picture' => $profile_picture
             );
 
-            $this->User_model->insert_user($data);
-
-            redirect('auth/login');
+            if ($this->User_model->insert_user($data)) {
+                redirect('auth/login');
+            } else {
+                log_message('error', 'User Registration Error: Could not insert user.');
+                echo "Registration failed!";
+            }
         }
     }
 
@@ -141,7 +146,7 @@ class Auth extends CI_Controller {
     }
 
     public function search() {
-        $this->load->view('search');  // Load the search page initially
+        $this->load->view('search');  
     }
     
     public function search_results() {
